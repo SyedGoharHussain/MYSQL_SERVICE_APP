@@ -12,12 +12,6 @@ void cls()
     system("cls");
 }
 
-void cls()
-{
-    system("clear");
-}
-
-
 using namespace std;
 
 #define RED "\033[1;31m"
