@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS workers (
 CREATE TABLE IF NOT EXISTS service_requests (
     request_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
+    city VARCHAR(50),
+    category VARCHAR(50),
     worker_id INT,
     description TEXT,
     proposed_fee DECIMAL(10,2),
@@ -37,7 +39,7 @@ CREATE TABLE IF NOT EXISTS chats (
     sender_role ENUM('customer', 'worker'),
     message TEXT,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (request_id) REFERENCES service_requests(request_id)
+    FOREIGN KEY (request_id) REFERENCES service_requests(request_id) ON delete cascade
 );
 
 CREATE TABLE IF NOT EXISTS reviews (
@@ -46,7 +48,7 @@ CREATE TABLE IF NOT EXISTS reviews (
     customer_id INT,
     rating DECIMAL(3,2),
     comment TEXT,
-    FOREIGN KEY (worker_id) REFERENCES workers(worker_id),
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    FOREIGN KEY (worker_id) REFERENCES workers(worker_id) ON delete cascade,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON delete cascade
 );
 
