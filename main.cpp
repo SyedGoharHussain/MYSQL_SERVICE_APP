@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,7 +12,7 @@ void cls()
 {
     system("cls");
 }
-
+//for cout and cin
 using namespace std;
 
 #define RED "\033[1;31m"
